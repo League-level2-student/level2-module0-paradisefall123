@@ -2,6 +2,8 @@ package arrays;
 
 import org.jointheleague.graphical.robot.Robot;
 
+import java.util.Random;
+
 public class _01_RobotRace {
 	//1. make a main method
     public static void main(String[] args) {
@@ -14,17 +16,24 @@ public class _01_RobotRace {
             robos[i]=new Robot();
         }
         //4. make each robot start at the bottom of the screen, side by side, facing up
-        int xmove=120;
+        int xmove=100;
         int ymove=550;
         for(int i=0; i< robos.length;i++){
-         xmove=xmove+(i*40);
+         xmove=xmove+(140);
          robos[i].setX(xmove);
          robos[i].setY(ymove);
 
         }
+
+
         //5. use another for loop to iterate through the array and make each robot move
         //   a random amount less than 50.
+        Random move= new Random();
 
+        for(int i=0; i< robos.length;i++){
+            move.nextInt(49);
+            robos[i].move();
+        }
         //6. use a while loop to repeat step 5 until a robot has reached the top of the screen.
 
         //7. declare that robot the winner and throw it a party!
