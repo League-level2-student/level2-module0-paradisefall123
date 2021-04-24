@@ -63,11 +63,11 @@ public class _01_RobotRace {
     }
     public static void moveRobotCircle(Robot[] robos) {
    Random speed=new Random();
-   Random turnAngle=new Random();
+   Random move=new Random();
         for (int i = 0; i < robos.length; i++) {
             int randSpeed= speed.nextInt(100);
             robos[i].setSpeed(randSpeed);
-            robos[i].move(30);
+            robos[i].move(move.nextInt(40));
             robos[i].turn(10);
 
         }
