@@ -1,19 +1,10 @@
-/*****
- * 
- * Run the FndHdnBtn.jar to play the finished game
- * 
- *****/
-
 package arrays;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
-	
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+
+import javax.swing.*;
 
 public class _02_FindTheHiddenButton implements ActionListener{
 	JFrame window;
@@ -48,8 +39,10 @@ public class _02_FindTheHiddenButton implements ActionListener{
 		if (buttons[hiddenButton]==buttonClicked){
 			JOptionPane.showMessageDialog(null, "You are a winner!");
 			hiddenButton=setupHiddenButton(buttons.length);
+
 		}else{
 			JOptionPane.showMessageDialog(null, "Try again!");
+
 		}
 		//18. else tell them to try again
 	}
@@ -58,17 +51,24 @@ public class _02_FindTheHiddenButton implements ActionListener{
 		Random hiddenRandom=new Random();
 		hiddenButton=hiddenRandom.nextInt(size);
 		//14. Set the text of the JButton located at hiddenButton to  "ME"
-		buttons[hiddenButton].setText("ME");
+
+
 		try
 		{
+			buttons[hiddenButton].setText("ME");
+			refreshTheScreen();
+			System.out.println("Setting text");
 			Thread.sleep(1000);
+
+			buttons[hiddenButton].setText(" ");
+
 		}
 		catch (Exception ex )
 		{
-
+		System.out.println(" Sleep exception");
 		}
 
-		buttons[hiddenButton].setText(" ");
+
 		return hiddenButton;
 
 	}
@@ -100,6 +100,23 @@ public class _02_FindTheHiddenButton implements ActionListener{
 			panel.add(buttonarray[i]);
 		}
 		return buttonarray;
+	}
+	public void refreshTheScreen(){
+		//window.revalidate();
+		//SwingUtilities.updateComponentTreeUI(window);
+
+			window.pack();
+			SwingUtilities.updateComponentTreeUI(panel);
+			panel.invalidate();
+			window.invalidate();
+			panel.validate();
+			window.validate();
+			panel.repaint();
+			window.repaint();
+			window.getContentPane().repaint();
+
+		System.out.println("called");
+
 	}
 }
 
